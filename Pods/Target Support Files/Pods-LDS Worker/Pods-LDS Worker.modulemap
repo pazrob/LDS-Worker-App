@@ -1,0 +1,6 @@
+framework module Pods_LDS_Worker {
+  umbrella header "Pods-LDS Worker-umbrella.h"
+
+  export *
+  module * { export * }
+}

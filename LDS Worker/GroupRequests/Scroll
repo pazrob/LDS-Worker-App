@@ -1,0 +1,96 @@
+//
+//  FeedCell.swift
+//  TempleWorker2
+//
+//  Created by Campus Life Design 1 on 5/7/18.
+//  Copyright © 2018 Robinson Paz. All rights reserved.
+//
+
+//This is for the line of videos
+
+import UIKit
+
+class Scroll: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    let videoCellId = "videoCellId"
+    let groupRequestCell = "groupRequestCell"
+    var videos: [Video]?
+    
+    func fetchVideos(){
+        //Fill video array here
+    }
+    
+    //page containers
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = UIColor.white
+        cv.dataSource = self
+        cv.delegate = self
+        return cv
+    }()
+    override func setUpViews() {
+        super.setUpViews()
+        fetchVideos()
+        addSubview(collectionView)
+        
+        addConstrainsWithFormat(format: "H:|[v0]|", views: collectionView)
+        addConstrainsWithFormat(format: "V:|[v0]-9-|", views: collectionView)
+        //Using VidelCell
+        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: videoCellId)
+        collectionView.register(GroupRequestCell.self, forCellWithReuseIdentifier: groupRequestCell)
+    }
+    
+    //>> MANY VERTICAL CELLS
+    
+    //Set number of cells
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return videos?.count ?? 0
+    }
+    //Set recycler cell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: videoCellId, for: indexPath) as! VideoCell
+        cell.video = videos?[indexPath.item]
+        return cell
+    }
+    //Set size of cell
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = (frame.width - 16 - 16) * 9 / 16
+        return CGSize(width: frame.width ,height: height + 16 + 88)
+    }
+    //Space between cells
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+}
+
+//    var videos: [Video]?
+//    func fetchVideos() {
+//        let jsonURLString = "https://s3-us-west-2.amazonaws.com/youtubeassets/home.json"
+//        guard let url = URL(string: jsonURLString) else {return}
+//        URLSession.shared.dataTask(with: url) {
+//            (data, response, error) in
+//            if(error != nil){
+//                print(error ?? "Something went wrong at Json tasking")
+//                return
+//            }
+//            //Check response status 200
+//            //Print json as string
+//            //guard let data = data else {return}
+//            //let DataAsString = String(data: data, encoding: .utf8)
+//            //print(data)
+//
+//            do{
+//                //checks data is there
+//                guard let data = data else {return}
+//                //parse the json into the objects/structs
+//                let videoDatas = try JSONDecoder().decode(Video.self, from: data)
+//                self.otros?.append(videoDatas)
+//
+//            }catch let jsonErr{
+//                print("JSON Serializing error: ", jsonErr)
+//            }
+//            }.resume()
+//        self.videos = otros
+//    }
