@@ -45,4 +45,12 @@ extension UIView{
         gradient.endPoint = CGPoint(x: 0, y: 1)
         self.layer.insertSublayer(gradient, at: 0)
     }
+    
+    func addShadow(size: CGSize = CGSize(width: 0, height: 4), radious: CGFloat = 5, opacity: Float = 0.05) {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = size
+        layer.shadowRadius = radious
+        layer.shadowOpacity = opacity
+        layer.masksToBounds = false
+    }
 }

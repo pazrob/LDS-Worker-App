@@ -12,14 +12,16 @@ class BaseCell : UICollectionViewCell{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setUpViews()
     }
     
-    //Will call automaticly in all children
+    //Implement in children
     func setUpViews(){
         
     }
     
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

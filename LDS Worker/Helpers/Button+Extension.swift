@@ -9,7 +9,7 @@
 import UIKit
 
 
-extension UIButton{
+extension UIButton {
     
     static func getAppButton(text: String) -> UIButton{
         let cb = UIButton(type: .system)
@@ -20,6 +20,8 @@ extension UIButton{
         cb.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         cb.titleLabel?.textColor = .white
         cb.layer.cornerRadius = 21
+        cb.isUserInteractionEnabled = true
+        cb.translatesAutoresizingMaskIntoConstraints = false
         return cb
     }
     
@@ -33,6 +35,7 @@ extension UIButton{
         btn.titleLabel?.textAlignment = .center
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         btn.layer.cornerRadius = 21
+        btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }
 }

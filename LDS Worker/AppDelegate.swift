@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 import Firebase
 
 @UIApplicationMain
@@ -18,48 +19,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Use Firebase library to configure APIs
         FirebaseApp.configure()
+//        val database = FirebaseDatabase.getInstance()
+//        database.setPersistenceEnabled(true)
         
         //Give access to the view through the code, this window is the whole container
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = LaunchingViewController()
-        
-        //Listens to user logged-in state
-        observeState()
+        window?.rootViewController = UINavigationController(rootViewController: PickGenderController())
         
         //Navigation Bar color and shadow
-        UINavigationBar.appearance().barTintColor = UIColor.appMainColor
-        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barTintColor = UIColor.appEmptyColor
+//        UINavigationBar.appearance().shadowImage = UIImage()
         application.statusBarStyle = .lightContent
+        
+        //Listens to user logged-in state
+        assignController()
         
         return true
     }
     
-    fileprivate func observeState() {
-        
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+    func requestReview() {
+        SKStoreReviewController.requestReview()
+    }
+    
+    func assignController() {
+        if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+            //User is logged in
+            print("The user isLoggedIn")
+            let layout = UICollectionViewFlowLayout()
+            self.window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
             
-            if user != nil {
-                FirebaseService.observeUserProfile(user!.uid, completion: { (userProfile) in
-                    if userProfile != nil{
-                        print("Wellcome \(userProfile!.firstName!)")
-                        FirebaseService.currentUserProfile = userProfile
-                        let layout = UICollectionViewFlowLayout()
-                        self.window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
-                        
-                    } else {
-                        print(" >>>>> None signed in A <<<<< ")
-                        FirebaseService.currentUserProfile = nil
-                        FirebaseService.userPhoto = nil
-                        self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
-                    }
-                })
-            } else {
-                print(" >>>>> None signed in B <<<<< ")
-                FirebaseService.currentUserProfile = nil
-                FirebaseService.userPhoto = nil
-                self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
-            }            
+        } else {
+            //User is NOT logged in
+            print("NO isLoggedIn")
+            let loginViewController = LoginViewController()
+            self.window?.rootViewController = UINavigationController(rootViewController: loginViewController)
         }
     }
     

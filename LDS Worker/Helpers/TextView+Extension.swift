@@ -32,5 +32,35 @@ extension UITextView{
         return textView
     }
     
+    static func getAgreement() -> UITextView {
+        
+        //Text
+        let attributedString = NSMutableAttributedString(string: LoginForm.agreement.rawValue)
+        
+        //Attributes
+        let termsAttributes: [NSAttributedStringKey: Any] = [
+            .link: NSURL(string: LoginForm.termsLink.rawValue )as Any,
+            .foregroundColor: UIColor.appMainColor,
+            .underlineStyle: true,
+            ]
+        let policyAttributes: [NSAttributedStringKey: Any] = [
+            .link: NSURL(string: LoginForm.policyLink.rawValue ) as Any,
+            .foregroundColor: UIColor.appMainColor,
+            .underlineStyle: true
+        ]
+        attributedString.setAttributes(termsAttributes, range: NSMakeRange(44, 20))
+        attributedString.setAttributes(policyAttributes, range: NSMakeRange(69, 11))
+        
+        //UITextView
+        let textView = UITextView()
+        textView.attributedText = attributedString
+        textView.isUserInteractionEnabled = true
+        textView.isEditable = false
+        textView.textAlignment = .center
+        textView.backgroundColor = .clear
+        textView.textColor = .darkGray
+        return textView
+    }
+    
     
 }

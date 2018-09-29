@@ -10,12 +10,14 @@ import UIKit
 
 extension UIImageView{
     
-    static func getProfileFrame(with name: String) -> UIImageView{
+    static func getProfileFrame(with name: String?) -> UIImageView{
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 50 //imageView.bounds.height / 2
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: name)
+        if let theName = name {
+            imageView.image = UIImage(named: theName)
+        }        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }

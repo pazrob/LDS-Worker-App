@@ -31,6 +31,11 @@ extension UIColor{
     static let bottomGradient = UIColor.rgb(red: 0, green: 174, blue: 145)
     
     static let fieldIcon = UIColor.rgb(red: 220, green: 220, blue: 220)
+    
+    static let appScrollBackground = UIColor.appEmptyColor
+    
+    static let sisterColor = UIColor.rgb(red: 252, green: 127, blue: 156)
+    static let brotherColor = UIColor.appMainColor
 }
 
 

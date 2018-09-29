@@ -35,7 +35,7 @@ extension UILabel{
     static func getH2(text: String) -> UILabel{
         let label = UILabel()
         label.textAlignment = .left
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         label.text = text
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
