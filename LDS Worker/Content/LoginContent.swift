@@ -2,7 +2,7 @@
 //  LoginContent.swift
 //  LDS Worker
 //
-//  Created by Campus Life Design on 7/31/18.
+//  Created by Robinson Paz on 7/31/18.
 //  Copyright © 2018 Robinson Paz. All rights reserved.
 //
 
