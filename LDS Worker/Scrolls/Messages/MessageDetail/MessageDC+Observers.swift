@@ -12,12 +12,12 @@ import Firebase
 extension MessageDetailController {
     
     func observeKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     @objc func handleKeyboardWillShow(notification: Notification) {
         
-        if let keyboardDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double {
+        if let keyboardDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             UIView.animate(withDuration: keyboardDuration, animations: {
                 self.view.layoutIfNeeded()
             }) { completed in

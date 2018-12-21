@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SettingCell: BaseCell {
     
@@ -30,7 +31,25 @@ class SettingCell: BaseCell {
     }()
     
     @objc func switchAction(sender: UISwitch) {
-        UserDefaults.standard.set(sender.isOn, forKey: UserDefaultsKeys.notificationOn.rawValue)
+        
+        //Request permission to the user to send notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if granted == true {
+                UserDefaults.standard.set(sender.isOn, forKey: UserDefaultsKeys.notificationOn.rawValue)
+            }
+        }
+        
+        //Send notificatoin
+        let content = UNMutableNotificationContent()
+        content.title = "Robinson Paz needs help!"
+        content.body = "Someone to cover for me tomorrow! :D"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "identifierId", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     override func setUpViews() {

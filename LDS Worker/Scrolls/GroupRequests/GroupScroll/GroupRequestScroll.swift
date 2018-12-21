@@ -33,7 +33,7 @@ class GroupRequestScroll: BaseCell, UICollectionViewDataSource, UICollectionView
         cv.delegate = self
         cv.register(GroupRequestCell.self, forCellWithReuseIdentifier: groupRequestCellId)
         cv.register(EmptyCollectionCell.self, forCellWithReuseIdentifier: emptyCellId)
-        cv.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        cv.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         cv.bounces = true
         cv.alwaysBounceVertical = true
         return cv

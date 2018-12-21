@@ -31,7 +31,7 @@ class MyRequestScroll: BaseCell {
         cv.delegate = self
         cv.register(MyRequestCell.self, forCellWithReuseIdentifier: myRequestCellId)
         cv.register(EmptyCollectionCell.self, forCellWithReuseIdentifier: emptyCellId)
-        cv.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        cv.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         cv.alwaysBounceVertical = true
         return cv
     }()

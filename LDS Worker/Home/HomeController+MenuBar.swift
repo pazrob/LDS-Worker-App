@@ -19,6 +19,6 @@ extension HomeController {
     
     func scrollToMenuIndex(menuIndex: Int){
         let indexPath = NSIndexPath(row: menuIndex, section: 0)
-        collectionView?.scrollToItem(at: indexPath as IndexPath, at: UICollectionViewScrollPosition(rawValue: 0), animated: true)
+        collectionView?.scrollToItem(at: indexPath as IndexPath, at: UICollectionView.ScrollPosition(rawValue: 0), animated: true)
     }
 }

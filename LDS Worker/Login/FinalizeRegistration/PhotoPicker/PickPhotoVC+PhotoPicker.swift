@@ -13,14 +13,17 @@ extension PickPhotoViewController :  UIImagePickerControllerDelegate, UINavigati
         picker.dismiss(animated: true, completion: nil)
     }
     
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
         var selectedImageFromPicker: UIImage?
         
-        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let editedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage {
             selectedImageFromPicker = editedImage
             
-        } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        } else if let originalImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
             selectedImageFromPicker = originalImage
         }
         
@@ -44,3 +47,13 @@ extension PickPhotoViewController :  UIImagePickerControllerDelegate, UINavigati
     
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}

@@ -7,11 +7,34 @@
 //
 
 import UIKit
+import SwiftyStoreKit
 
 class DonateViewController: UIViewController {
     
+    let inAppPurchaseIds = [
+        "com.robinson.LDSWorker.consumable1",
+        "com.robinson.LDSWorker.consumable2",
+        "com.robinson.LDSWorker.consumable3",
+        "com.robinson.LDSWorker.consumable4"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SwiftyStoreKit.retrieveProductsInfo(["com.robinson.LDSWorker.consumable1"]) { result in
+            if let product = result.retrievedProducts.first {
+                let priceString = product.localizedPrice!
+                print("Product: \(product.localizedDescription), price: \(priceString)")
+            }
+            else if let invalidProductId = result.invalidProductIDs.first {
+                print("Invalid product identifier: \(invalidProductId)")
+            }
+            else {
+                print("Error: \(String(describing: result.error))")
+            }
+        }
+        
+        
         
         //Nav Bar
         self.title = UITextSettings.donate.rawValue

@@ -43,7 +43,7 @@ class SettingsController: UIViewController {
         collection.dataSource = self
         collection.register(SettingCell.self, forCellWithReuseIdentifier: defaultCellId)
         collection.register(SignatureCell.self, forCellWithReuseIdentifier: signatureCellId)
-        collection.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collection.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         collection.isScrollEnabled = true
         collection.bounces = true
         collection.alwaysBounceVertical = true

@@ -22,11 +22,11 @@ class TempleDetailsController : UIViewController {
     func setUpNavigationBar() {
         
         //Title Attributes
-        let titleAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         
         self.title = "Timpanogos Temple"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(handleDoneTempleDetails))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(handleDoneTempleDetails))
         self.navigationController?.navigationBar.tintColor = .white
     }
     

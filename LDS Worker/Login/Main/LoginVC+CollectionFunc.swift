@@ -63,10 +63,10 @@ extension LoginViewController: UICollectionViewDataSource, UICollectionViewDeleg
     override var prefersStatusBarHidden: Bool { return true }
     
     @objc func handleRegisterSwipe(){
-        loginCollection.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
+        loginCollection.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
     }
     
     @objc func handleLoginSwipe(){
-        loginCollection.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
+        loginCollection.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
     }
 }

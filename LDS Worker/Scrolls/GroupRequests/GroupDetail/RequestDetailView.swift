@@ -84,13 +84,6 @@ class RequestDetailView : UIView {
     let toLabel = UILabel.getLabelDescriptionDefaults(text: "TO:")
     let labelStatus = UILabel.getLabelDescriptionDefaults(text: "STATUS:")
     
-//    let expiredWarningLabel = UILabel.getLabelFooterDefaults(text: "This request is expired")
-    
-//    let messageButton: UIButton = {
-//        let btn = UIButton.getAppButton(text: "Message")
-//        return btn
-//    }()
-    
     lazy var callButton : UIButton = {
         let button = UIButton(type: .system)
         let icon = UIImage(named: PictureKeys.callIcon.rawValue)?.withRenderingMode(.alwaysTemplate)
@@ -102,7 +95,6 @@ class RequestDetailView : UIView {
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
         button.widthAnchor.constraint(equalToConstant: 60).isActive = true
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(handleCallingButton), for: .touchUpInside)
         return button
     }()
     
@@ -118,7 +110,6 @@ class RequestDetailView : UIView {
         button.widthAnchor.constraint(equalToConstant: 60).isActive = true
         button.isUserInteractionEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(handleTextingButton), for: .touchUpInside)
         return button
     }()
     
@@ -179,11 +170,8 @@ class RequestDetailView : UIView {
         bodyView.addSubview(statusField)
         bodyView.addSubview(divider6)
         
-//        containerView.addSubview(expiredWarningLabel)
         
-//        footerView.addSubview(messageButton)
         footerView.addSubview(optionsStack)
-        
         
         //Header Container
         headerView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0).isActive = true
@@ -198,7 +186,6 @@ class RequestDetailView : UIView {
         bodyView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         bodyView.bottomAnchor.constraint(equalTo: labelStatus.bottomAnchor, constant: 20).isActive = true
         
-        
         //Posted Label Constraints
         addConstrainsWithFormat(format: "H:|[v0]|", views: posted)
         addConstrainsWithFormat(format: "V:[v0(10)]", views: posted)
@@ -211,13 +198,14 @@ class RequestDetailView : UIView {
         addConstraint(NSLayoutConstraint(item: nameLabel, attribute: .bottom, relatedBy: .equal, toItem: posted, attribute: .top, multiplier: 1, constant: -5))
         addConstraint(NSLayoutConstraint(item: nameLabel, attribute: .centerX, relatedBy: .equal, toItem: headerView, attribute: .centerX, multiplier: 1, constant: 0))
         
-        //        Profile Picture Constraints
+        //Profile Picture Constraints
         profileWidthConstraint = profilePicture.widthAnchor.constraint(equalToConstant: 100)
         profileWidthConstraint?.isActive = true
         profileHeightConstraint = profilePicture.heightAnchor.constraint(equalToConstant: 100)
         profileHeightConstraint?.isActive = true
         addConstraint(NSLayoutConstraint(item: profilePicture, attribute: .centerX, relatedBy: .equal, toItem: headerView, attribute: .centerX, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: profilePicture, attribute: .bottom, relatedBy: .equal, toItem: nameLabel, attribute: .top, multiplier: 1, constant: -10))
+        
         //Separator Line Constraints
         addConstrainsWithFormat(format: "H:|[v0]|", views: divider1)
         addConstrainsWithFormat(format: "V:[v0(0.3)]|", views: divider1)
@@ -235,7 +223,6 @@ class RequestDetailView : UIView {
         addConstraint(NSLayoutConstraint(item: divider3, attribute: .top, relatedBy: .equal, toItem: noteField, attribute: .bottom, multiplier: 1, constant: 0))
         addConstrainsWithFormat(format: "H:|-14-[v0]|", views: divider3)
         addConstrainsWithFormat(format: "V:[v0(0.3)]", views: divider3)
-        
         
         //Label from Constraints
         addConstrainsWithFormat(format: "H:|-14-[v0]-14-|", views: fromLabel)
@@ -266,11 +253,6 @@ class RequestDetailView : UIView {
         addConstrainsWithFormat(format: "V:[v0]", views: labelStatus)
         addConstraint(NSLayoutConstraint(item: labelStatus, attribute: .top, relatedBy: .equal, toItem: divider5, attribute: .bottom, multiplier: 1, constant: 15))
         
-        
-        
-        
-        
-       
         //Status Constraints
         addConstrainsWithFormat(format: "H:[v0]-14-|", views: statusField)
         addConstrainsWithFormat(format: "V:[v0(40)]", views: statusField)
@@ -279,32 +261,17 @@ class RequestDetailView : UIView {
         addConstrainsWithFormat(format: "H:|[v0]|", views: divider6)
         addConstrainsWithFormat(format: "V:[v0(0.5)]|", views: divider6)
         
-        
-//        //Expiration Warning Button Constraints
-//        addConstrainsWithFormat(format: "H:[v0]-14-|", views: expiredWarningLabel)
-//        addConstrainsWithFormat(format: "V:[v0]", views: expiredWarningLabel)
-//        expiredWarningLabel.topAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: 5).isActive = true
-      
-        
         //Footer Container
         footerView.topAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: 30).isActive = true
         footerView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         footerView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        footerView.heightAnchor.constraint(equalToConstant: 160).isActive = true
+        footerView.heightAnchor.constraint(equalToConstant: 140).isActive = true
         footerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        
+     
         //Buttons
-//        messageButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 15).isActive = true
-//        messageButton.centerXAnchor.constraint(equalTo: footerView.centerXAnchor).isActive = true
-//        messageButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
-//        messageButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        
         addConstrainsWithFormat(format: "H:[v0]", views: optionsStack)
         addConstrainsWithFormat(format: "V:|[v0]", views: optionsStack)
         optionsStack.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        
-
     }
     
     required init?(coder aDecoder: NSCoder) {

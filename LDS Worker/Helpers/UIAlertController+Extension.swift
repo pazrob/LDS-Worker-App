@@ -12,7 +12,7 @@ extension UIAlertController {
     
     static func somethingWentWrongController (viewController: UIViewController?,
                                                 title: String = "There has been an error, please try again later",
-                                                preferredStyle: UIAlertControllerStyle = .alert) {
+                                                preferredStyle: UIAlertController.Style = .alert) {
     
         let errorActionSheet = UIAlertController(title: title, message: nil, preferredStyle: preferredStyle)
         let actionOkay = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
@@ -25,12 +25,12 @@ extension UIAlertController {
     static func sendMessage(viewController: UIViewController? ,
                             title: String = "Error" ,
                             message: String,
-                            preferredStyle: UIAlertControllerStyle = .alert) {
+                            preferredStyle: UIAlertController.Style = .alert) {
         
         guard let controller = viewController else { return }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        let okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil)
+        let okay = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil)
         alert.addAction(okay)
         
         controller.present(alert, animated: true, completion: nil)

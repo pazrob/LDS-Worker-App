@@ -16,6 +16,7 @@ enum BaseNodes: String {
     case requests = "requests"
     case usersRequest = "users-requests"
     case usersLastMessage = "users-lastMessages"
+    case permissions = "isAppBloqued"
 }
 
 enum NodeKeys: String {

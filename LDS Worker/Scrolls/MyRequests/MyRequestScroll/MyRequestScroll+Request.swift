@@ -53,7 +53,7 @@ extension MyRequestScroll {
     
     func systemLikeAnimation() {
         
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseInOut, animations: {
             self.createRequestButton.iconAdd.alpha = 0.2
             self.createRequestButton.viewLabel.alpha = 0.2
         }) { done in

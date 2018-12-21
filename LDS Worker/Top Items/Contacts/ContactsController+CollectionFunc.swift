@@ -18,13 +18,13 @@ extension ContactsController: UICollectionViewDelegateFlowLayout {
         //Make button clickable feel
         
         collectionView?.backgroundColor = .clear
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.view.frame
         collectionView?.backgroundView = blurEffectView
         
         collectionView?.register(ContactCell.self, forCellWithReuseIdentifier: tableViewId)
-        collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
     

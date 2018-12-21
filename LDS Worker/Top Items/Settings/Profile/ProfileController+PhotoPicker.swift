@@ -33,7 +33,10 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
         var selectedImageFromPicker: UIImage?
         
@@ -70,7 +73,6 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
                         FirebaseService.currentUserProfile?.imageURL = url?.absoluteString
                         ImageService.userPhoto = imageProfile.withRenderingMode(.alwaysOriginal)
                         self.profileCollection.reloadData()
-                        UIApplication.successAnimation()
                         
                     } else {
                         print("ERROR: Uploading link to database")
@@ -83,4 +85,9 @@ extension ProfileController: UIImagePickerControllerDelegate, UINavigationContro
             print("NO PICTURE UPLOADED")
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }

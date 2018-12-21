@@ -25,7 +25,7 @@ class MessageScroll: BaseCell {
         cv.delegate = self
         cv.register(MessageCell.self, forCellWithReuseIdentifier: myRequestCellId)
         cv.register(EmptyCollectionCell.self, forCellWithReuseIdentifier: emptyCellId)
-        cv.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        cv.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         return cv
     }()
     

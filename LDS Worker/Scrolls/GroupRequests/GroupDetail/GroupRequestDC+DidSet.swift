@@ -12,9 +12,12 @@ extension GroupRequestDetailController {
     
     func handleDidSet() {
         
+        //Get gender
+        let title = postDetails?.gender == "m" ? "Brother" : "Sister"
+        
         //Name
         if let last = postDetails?.lastName, let first = postDetails?.firstName{
-            requestDetailView.nameLabel.text = "Brother \(last), \(first)"
+            requestDetailView.nameLabel.text = "\(title) \(last), \(first)"
         }
         
         //Date posted

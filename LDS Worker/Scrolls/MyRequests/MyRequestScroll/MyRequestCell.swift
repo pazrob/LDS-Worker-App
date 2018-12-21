@@ -43,7 +43,7 @@ class MyRequestCell: BaseCell {
     let arrowDetail:UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "arrow")
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.image = imageView.image!.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = UIColor.lightGray

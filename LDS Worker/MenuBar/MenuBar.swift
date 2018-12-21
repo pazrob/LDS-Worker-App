@@ -14,7 +14,7 @@ class MenuBar: UIView {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = cv.bounds
         blurredEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -48,7 +48,7 @@ class MenuBar: UIView {
     func setUpMenuCollection() {
         
         let indexpath = IndexPath(item: 0, section: 0)
-        menuCollectionView.selectItem(at: indexpath, animated: false, scrollPosition: UICollectionViewScrollPosition.left)
+        menuCollectionView.selectItem(at: indexpath, animated: false, scrollPosition: UICollectionView.ScrollPosition.left)
         
         addSubview(menuCollectionView)
         

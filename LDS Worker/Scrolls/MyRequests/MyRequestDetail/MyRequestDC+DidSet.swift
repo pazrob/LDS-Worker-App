@@ -53,7 +53,7 @@ extension MyRequestDetailController {
             //Update post
             myRequestDetailView.posted.textColor = UIColor.appUncovered
             myRequestDetailView.posted.font = UIFont.boldSystemFont(ofSize: 13)
-            myRequestDetailView.posted.text = "EXPIRED"
+            myRequestDetailView.posted.text = "THIS REQUEST EXPIRED"
             
             //Disable status button
             myRequestDetailView.statusButton.backgroundColor = UIColor.lightGray

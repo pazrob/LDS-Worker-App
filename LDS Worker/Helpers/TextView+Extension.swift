@@ -14,7 +14,7 @@ extension UITextView{
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = "Notes"
-        textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
+        textView.textContainerInset = UIEdgeInsets.init(top: 0, left: -4, bottom: 0, right: 0)
         textView.font = textView.font?.withSize(15)
         textView.isEditable = false
         textView.textAlignment = .left
@@ -24,7 +24,7 @@ extension UITextView{
     static func getH2(isEditable: Bool) -> UITextView{
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
+        textView.textContainerInset = UIEdgeInsets.init(top: 0, left: -4, bottom: 0, right: 0)
         textView.font = UIFont.preferredFont(forTextStyle: .body)
         textView.isEditable = isEditable
         textView.textAlignment = .left
@@ -38,12 +38,12 @@ extension UITextView{
         let attributedString = NSMutableAttributedString(string: LoginForm.agreement.rawValue)
         
         //Attributes
-        let termsAttributes: [NSAttributedStringKey: Any] = [
+        let termsAttributes: [NSAttributedString.Key: Any] = [
             .link: NSURL(string: LoginForm.termsLink.rawValue )as Any,
             .foregroundColor: UIColor.appMainColor,
             .underlineStyle: true,
             ]
-        let policyAttributes: [NSAttributedStringKey: Any] = [
+        let policyAttributes: [NSAttributedString.Key: Any] = [
             .link: NSURL(string: LoginForm.policyLink.rawValue ) as Any,
             .foregroundColor: UIColor.appMainColor,
             .underlineStyle: true

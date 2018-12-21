@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import StoreKit
 import Firebase
+import SwiftyStoreKit
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,24 +17,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Use Firebase library to configure APIs
-        FirebaseApp.configure()
-//        val database = FirebaseDatabase.getInstance()
-//        database.setPersistenceEnabled(true)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        //In-App purchase
+        completeTrasactions()
         
         //Give access to the view through the code, this window is the whole container
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: PickGenderController())
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = UINavigationController(rootViewController: PickGenderController())
         
-        //Navigation Bar color and shadow
-        UINavigationBar.appearance().barTintColor = UIColor.appEmptyColor
-//        UINavigationBar.appearance().shadowImage = UIImage()
-        application.statusBarStyle = .lightContent
+        //Firebase library to configure APIs
+        FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = false
         
-        //Listens to user logged-in state
-        assignController()
+        //Check if app is bloqued
+        FirebaseService.isAppBloqued { [unowned self] isBloqued in
+            
+            if isBloqued {
+                
+                //Send to app bloqued controller
+                self.window?.rootViewController = UINavigationController(rootViewController: AppBloquedViewController())
+                return
+            }
+            
+            //Navigation Bar color and shadow
+            UINavigationBar.appearance().barTintColor = UIColor.appEmptyColor
+            application.statusBarStyle = .lightContent
+            
+            //Listens to user logged-in state
+            self.assignController()
+        }
+        
         
         return true
     }
@@ -42,16 +57,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SKStoreReviewController.requestReview()
     }
     
+    func observeInternetConnection() {
+        
+        let connectedRef = Database.database().reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+            
+            if snapshot.value as? Bool ?? false {
+                print("Connected")
+            } else {
+                let atController = self.window?.rootViewController
+                UIAlertController.sendMessage(viewController: atController, message: "There is no internet connection.")
+            }
+        })
+        
+    }
+    
+    
+    //Asigns the VC based on logged status
     func assignController() {
-        if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+        
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue) {
             //User is logged in
-            print("The user isLoggedIn")
             let layout = UICollectionViewFlowLayout()
             self.window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
             
         } else {
             //User is NOT logged in
-            print("NO isLoggedIn")
             let loginViewController = LoginViewController()
             self.window?.rootViewController = UINavigationController(rootViewController: loginViewController)
         }
@@ -77,6 +108,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    //
+    func completeTrasactions() {
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        // Deliver content from server, then:
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                // Unlock content
+                case .failed, .purchasing, .deferred:
+                    break // do nothing
+                }
+            }
+        }
     }
     
     

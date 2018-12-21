@@ -11,16 +11,16 @@ import UIKit
 extension NewRequestController {
     
     func addObservers(){
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //Implements observers action
     @objc private func keyboardNotification(notification: NSNotification){
         
-        let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+        let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
         mainView.headerTopConstraint?.constant = isKeyboardShowing ? scrollUpConstant : 0
-        UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }) { (completed) in
             

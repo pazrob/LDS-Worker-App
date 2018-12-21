@@ -35,7 +35,7 @@ class LoginCollectionCell : BaseCell {
         leftIcon.tintColor = UIColor.fieldIcon
         leftIcon.contentMode = .scaleAspectFit
         textField.leftView = leftIcon
-        textField.leftViewMode = UITextFieldViewMode.always
+        textField.leftViewMode = UITextField.ViewMode.always
         textField.keyboardType = UIKeyboardType.emailAddress
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.autocapitalizationType = UITextAutocapitalizationType.none
@@ -50,7 +50,7 @@ class LoginCollectionCell : BaseCell {
         leftIcon.tintColor = .fieldIcon
         leftIcon.contentMode = .scaleAspectFit
         textField.leftView = leftIcon
-        textField.leftViewMode = UITextFieldViewMode.always
+        textField.leftViewMode = UITextField.ViewMode.always
         textField.isSecureTextEntry = true
         return textField
     }()

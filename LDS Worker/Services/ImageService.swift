@@ -16,13 +16,14 @@ class ImageService {
     static let cache = NSCache<NSString, UIImage>()
     
     
+    
+    //Dowload an image with link
     static func downloadImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()){
         
         let dataTask = URLSession.shared.dataTask(with: url) { (data, responseURL, error) in
             
             //If fails
-            if error != nil || data == nil{
-                print("Error: \(error?.localizedDescription ?? "downloadImageError") ")
+            if error != nil || data == nil {
                 DispatchQueue.main.async {
                     completion(nil)
                 }
@@ -32,7 +33,10 @@ class ImageService {
             //If Success
             if let dataIn = data, let downloadedImage = UIImage(data: dataIn) {
                 
+                //Cache image
                 cache.setObject(downloadedImage, forKey: url.absoluteString as NSString)
+                
+                //Send completion
                 DispatchQueue.main.async {
                     completion(downloadedImage)
                 }
@@ -47,6 +51,8 @@ class ImageService {
         dataTask.resume()
     }
     
+    
+    // Checks image in cache, downloads otherwise
     static func getImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()){
         
         if let image = cache.object(forKey: url.absoluteString as NSString) {
@@ -61,6 +67,8 @@ class ImageService {
         }
     }
     
+    
+    // Fetch current users photo
     static func loadUserPicture(gender: String?){
         
         guard let currentUser = FirebaseService.currentUserProfile else {return}
@@ -72,25 +80,17 @@ class ImageService {
             }
             
         } else {
-            
+            //Assign default photo based on gender
             ImageService.userPhoto = nil
-            if let g = gender {
-                if g == LoginForm.m.rawValue {
-                    ImageService.defaultPhotoString = PictureKeys.brotherDefault.rawValue
-                } else if g == LoginForm.f.rawValue{
-                    ImageService.defaultPhotoString = PictureKeys.sisterDefault.rawValue
-                } else {
-                    print("Error in gender: \(g)")
-                }
-            }
         }
     }
     
     
+    //Uploads users picture to storage
     static func uploadPhotoToStorage(_ picture: UIImage, completion: @escaping ((_ url:URL?) -> ())){
         
         guard let userId = Auth.auth().currentUser?.uid else { return }
-        guard let imageData = UIImageJPEGRepresentation(picture, 0.25) else { return }
+        guard let imageData = picture.jpegData(compressionQuality: 0.25) else { return }
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
@@ -104,13 +104,17 @@ class ImageService {
                 storageRef.downloadURL(completion: { url, error in
                     
                     //Cannot download
-                    if error != nil{
+                    guard error == nil && url != nil else {
                         print(error!.localizedDescription)
+                        completion(nil)
                         return
                     }
                     
                     //Return the url, or nil if no url
                     DispatchQueue.main.async {
+                        
+                        //Cache image
+                        cache.setObject(picture, forKey: url!.absoluteString as NSString)
                         completion(url)
                     }
                 })
@@ -124,12 +128,13 @@ class ImageService {
         }
     }
     
+    
     static func deletePhotoFromStorage(uid: String){
         
         let pictureRef = Storage.storage().reference().child(StorageKeys.user.rawValue).child(uid)
         pictureRef.delete(completion: nil)
-        
     }
+    
     
     static func handleDeleteImage(completion: @escaping ((_ success:Bool) -> ())){
         
@@ -165,6 +170,7 @@ class ImageService {
         }
     }
     
+    
     static func updatePhotoInDatabase(profileImageURL: URL, completion: @escaping ((_ success: Bool) -> ())){
         
         guard let temple = FirebaseService.currentUserProfile?.temple else { return }
@@ -189,7 +195,6 @@ class ImageService {
                 }
             }
             
-            
             //4. Atomic Operation
             performAtomicOperation(fanOutObject: fanOutObject, completion: { didSucceeded in
                 completion(didSucceeded)
@@ -206,7 +211,5 @@ class ImageService {
             let succeeded = error == nil
             completion( succeeded )
         }
-        
     }
-    
 }

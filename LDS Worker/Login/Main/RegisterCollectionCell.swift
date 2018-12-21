@@ -49,7 +49,7 @@ class RegisterCollectionCell : BaseCell {
         leftIcon.tintColor = .fieldIcon
         leftIcon.contentMode = .scaleAspectFit
         textField.leftView = leftIcon
-        textField.leftViewMode = UITextFieldViewMode.always
+        textField.leftViewMode = UITextField.ViewMode.always
         textField.autocorrectionType = UITextAutocorrectionType.no
         return textField
     }()
@@ -68,7 +68,7 @@ class RegisterCollectionCell : BaseCell {
         leftIcon.tintColor = .fieldIcon
         leftIcon.contentMode = .scaleAspectFit
         textField.leftView = leftIcon
-        textField.leftViewMode = UITextFieldViewMode.always
+        textField.leftViewMode = UITextField.ViewMode.always
         textField.keyboardType = UIKeyboardType.emailAddress
         textField.autocorrectionType = UITextAutocorrectionType.no
         textField.autocapitalizationType = UITextAutocapitalizationType.none
@@ -83,7 +83,7 @@ class RegisterCollectionCell : BaseCell {
         leftIcon.tintColor = .fieldIcon
         leftIcon.contentMode = .scaleAspectFit
         textField.leftView = leftIcon
-        textField.leftViewMode = UITextFieldViewMode.always
+        textField.leftViewMode = UITextField.ViewMode.always
         textField.isSecureTextEntry = true
         return textField
     }()

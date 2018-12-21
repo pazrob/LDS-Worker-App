@@ -30,7 +30,7 @@ extension UIActivityIndicatorView {
         //Loading activity indicator
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        activityIndicator.style = .whiteLarge
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         

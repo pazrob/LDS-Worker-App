@@ -12,8 +12,8 @@ extension LoginViewController {
     
     func addKeyboardObservers(){
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
         
     @objc func keyboardNotification(notification: NSNotification){
@@ -22,7 +22,7 @@ extension LoginViewController {
 //        let scrollIconConstant: CGFloat = 140
 //
 //        //Get bool value for keyboard showing
-        let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+        let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
 //
 //        collectionBottomConstraint?.constant = isKeyboardShowing ? -200 : 0
 //        collectionTopConstraint?.constant = isKeyboardShowing ? 50 : 200
@@ -54,7 +54,7 @@ extension LoginViewController {
 //            iconTopConstraint?.constant = isKeyboardShowing ? scrollIconConstant : 75
 //        }
 
-        UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         })
         

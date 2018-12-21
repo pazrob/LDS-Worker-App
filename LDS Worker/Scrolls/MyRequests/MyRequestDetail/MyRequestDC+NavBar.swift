@@ -13,7 +13,7 @@ extension MyRequestDetailController{
     func setUpNavigationBar(){
         
         //Title Attributes
-        let titleAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         self.title = "My Request"
         

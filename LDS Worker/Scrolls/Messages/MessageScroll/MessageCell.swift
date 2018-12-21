@@ -89,7 +89,7 @@ class MessageCell: BaseCell {
     let senderPicture: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.appMainColor
-        imageView.contentMode = UIViewContentMode.scaleAspectFill
+        imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.layer.cornerRadius = 30
         imageView.layer.masksToBounds = true
         return imageView

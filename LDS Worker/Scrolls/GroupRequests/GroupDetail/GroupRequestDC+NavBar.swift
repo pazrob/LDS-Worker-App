@@ -12,10 +12,10 @@ extension GroupRequestDetailController {
     
     func setUpNavigationBar(){
         //Title Attributes
-        let titleAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         title = "Temple Requests"
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.done, target: self, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.done, target: self, action: nil)
     }
 }

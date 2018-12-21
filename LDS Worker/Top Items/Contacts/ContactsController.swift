@@ -31,7 +31,7 @@ class ContactsController: UICollectionViewController, MFMessageComposeViewContro
     func callCellPhone(name: String, number: String) {
         
         let callController = UIAlertController(title: name, message: String.getNumberedFormated(phone: number), preferredStyle: .actionSheet)
-        let callAction = UIAlertAction(title: "Call", style: UIAlertActionStyle.default) { alert in
+        let callAction = UIAlertAction(title: "Call", style: UIAlertAction.Style.default) { alert in
             //Making the call
             guard let numberToCall = URL(string: "tel://" + number) else { return }
             UIApplication.shared.open(numberToCall)
@@ -46,7 +46,7 @@ class ContactsController: UICollectionViewController, MFMessageComposeViewContro
     func messagePhone(fullName: String, number: String) {
         
         let messageController = UIAlertController(title: fullName, message: String.getNumberedFormated(phone: number), preferredStyle: .actionSheet)
-        let callAction = UIAlertAction(title: "Message", style: UIAlertActionStyle.default) { alert in
+        let callAction = UIAlertAction(title: "Message", style: UIAlertAction.Style.default) { alert in
             //Send message
             self.handleMessageButton(number: number)
         }

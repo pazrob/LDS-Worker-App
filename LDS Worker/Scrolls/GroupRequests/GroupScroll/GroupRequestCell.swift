@@ -24,7 +24,7 @@ class GroupRequestCell: BaseCell {
     //Circle subview
     let userProfileImageView:UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = UIViewContentMode.scaleAspectFill
+        imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.layer.cornerRadius = 30
         imageView.layer.masksToBounds = true
         return imageView

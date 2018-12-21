@@ -81,8 +81,6 @@ class MyRequestDetailView : UIView {
     let toLabel = UILabel.getLabelDescriptionDefaults(text: "TO:")
     let labelStatus = UILabel.getLabelDescriptionDefaults(text: "STATUS:")
     
-    let expiredWarningLabel = UILabel.getLabelFooterDefaults(text: "This request is expired")
-    
     var statusButton: UIButton = {
         let btn = UIButton.getAppButton(text: "Mark as Covered")
         return btn
@@ -139,8 +137,6 @@ class MyRequestDetailView : UIView {
         bodyView.addSubview(labelStatus)
         bodyView.addSubview(statusField)
         bodyView.addSubview(divider6)
-        
-        containerView.addSubview(expiredWarningLabel)
         
         footerView.addSubview(statusButton)
         footerView.addSubview(deleteButton)
@@ -231,11 +227,6 @@ class MyRequestDetailView : UIView {
         // Divider 6
         addConstrainsWithFormat(format: "H:|[v0]|", views: divider6)
         addConstrainsWithFormat(format: "V:[v0(0.5)]|", views: divider6)
-        //Expiration Warning Button Constraints
-        addConstrainsWithFormat(format: "H:[v0]-14-|", views: expiredWarningLabel)
-        addConstrainsWithFormat(format: "V:[v0]", views: expiredWarningLabel)
-        expiredWarningLabel.topAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: 5).isActive = true
-//        expiredWarningLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -150).isActive = true
         
         //Footer Container
         footerView.topAnchor.constraint(equalTo: bodyView.bottomAnchor, constant: 30).isActive = true

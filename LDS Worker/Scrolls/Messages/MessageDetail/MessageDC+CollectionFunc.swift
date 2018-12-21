@@ -16,7 +16,7 @@ extension MessageDetailController {
         self.collectionView?.register(MessageTextCell.self, forCellWithReuseIdentifier: messageTextCellId)
         self.collectionView?.alwaysBounceVertical = true
         self.collectionView?.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        self.collectionView?.keyboardDismissMode = UIScrollViewKeyboardDismissMode.interactive
+        self.collectionView?.keyboardDismissMode = UIScrollView.KeyboardDismissMode.interactive
         
     }
     
@@ -48,7 +48,7 @@ extension MessageDetailController {
     func estimatedFrameForText(text: String) -> CGRect{
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)], context: nil)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
 }

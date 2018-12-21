@@ -22,7 +22,7 @@ extension PickTempleViewController {
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItem.Style.plain, target: self, action: nil)
         
     }
     

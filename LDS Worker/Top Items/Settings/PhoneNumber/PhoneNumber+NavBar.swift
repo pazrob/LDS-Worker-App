@@ -14,11 +14,11 @@ extension PhoneNumberController {
     func setUpNavBar() {
         
         if let modal = modalMode, modal {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.cancel, target: self, action: #selector(handleDismiss))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(handleDismiss))
         }
         
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector(handleSavePhone))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(handleSavePhone))
         navigationItem.rightBarButtonItem?.isEnabled = false
         
     }
@@ -46,12 +46,9 @@ extension PhoneNumberController {
                     //First one is when Controller is presented as a Modal
                     //Second one is when Controller is pushed in Nav Controller
                     if let modal = self.modalMode, modal {
-                        self.presentingViewController?.dismiss(animated: true, completion: {
-                            UIApplication.successAnimation()
-                        })
+                        self.presentingViewController?.dismiss(animated: true, completion: nil)
                     } else {
                         self.view.endEditing(true)
-                        UIApplication.successAnimation()
                     }
                     
                 } else {

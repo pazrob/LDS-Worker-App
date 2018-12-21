@@ -29,7 +29,7 @@ class NewRequestView: UIView {
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.backgroundColor = UIColor.appEmptyColor
         scroll.delaysContentTouches = false
-        scroll.keyboardDismissMode = UIScrollViewKeyboardDismissMode.interactive
+        scroll.keyboardDismissMode = UIScrollView.KeyboardDismissMode.interactive
         return scroll
     }()
     
@@ -66,7 +66,7 @@ class NewRequestView: UIView {
     
     let datePicker: UIDatePicker = {
         let date = UIDatePicker.getDatePicker()
-        date.datePickerMode = UIDatePickerMode.dateAndTime
+        date.datePickerMode = UIDatePicker.Mode.dateAndTime
         date.minimumDate = Date(timeIntervalSinceNow: 0)
         var components = DateComponents()
         components.month = 1
@@ -75,7 +75,7 @@ class NewRequestView: UIView {
     }()
     let timePicker: UIDatePicker = {
         let time = UIDatePicker.getDatePicker()
-        time.datePickerMode = UIDatePickerMode.time
+        time.datePickerMode = UIDatePicker.Mode.time
         time.minuteInterval = 10
         return time
     }()

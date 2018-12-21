@@ -33,7 +33,7 @@ extension HomeController: UICollectionViewDelegateFlowLayout  {
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = targetContentOffset.pointee.x / view.frame.width
         let indexPath = IndexPath(item: Int(index), section: 0)
-        menuBar.menuCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition(rawValue: UICollectionViewScrollPosition.RawValue(0)))
+        menuBar.menuCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition(rawValue: UICollectionView.ScrollPosition.RawValue(0)))
     }
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return menuBar.tabs.count

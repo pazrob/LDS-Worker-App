@@ -79,6 +79,7 @@ extension NewRequestController: UINavigationBarDelegate {
     }
     
     func performSendRequest() {
+        print("gonna send!")
         
         guard let noteValue = self.mainView.noteField.text else {return}
         guard let toValue = self.mainView.timeField.text else {return}        
@@ -87,9 +88,7 @@ extension NewRequestController: UINavigationBarDelegate {
                 
         DataService.performSendRequest(note: noteValue, from: from, to: toValue, completion: { success in
             if success {
-                self.presentingViewController?.dismiss(animated: true, completion: {
-                    UIApplication.successAnimation()
-                })
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
             } else {
                 UIAlertController.somethingWentWrongController(viewController: self)
             }
