@@ -17,7 +17,7 @@ extension UIColor{
     static let appMainColor = UIColor.rgb(red: 7, green: 165, blue: 165)
     static let appHightLightColor = UIColor.rgb(red: 18, green: 198, blue: 193)
     static let appOpaqueColor = UIColor.rgb(red: 7, green: 107, blue: 107)
-    static let appEmptyColor = UIColor.rgb(red: 241, green: 241, blue: 241)
+    static let appEmptyColor = UIColor.rgb(red: 240, green: 240, blue: 240)
     static let appDarkGray = rgb(red: 100, green: 100, blue: 100)
     static let appLightGray = UIColor.rgb(red: 230, green: 230, blue: 230)
     static let appMenuColor = UIColor.rgb(red: 7, green: 165, blue: 165)

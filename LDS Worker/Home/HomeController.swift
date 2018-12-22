@@ -8,12 +8,16 @@
 
 import UIKit
 
+// This is the first controller after authentication
+
 class HomeController: UICollectionViewController {
     
+    lazy var menuBar: MenuBar = {
+        let mb = MenuBar()
+        mb.homeController = self
+        return mb
+    }()
     
-//    let messagesScrollId = "messagesScrollId"
-    let myRequestScrollId = "myRequestScrollId"
-    let groupRequestScrollId = "groupRequestScrollId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +35,7 @@ class HomeController: UICollectionViewController {
             self.title = userProfile?.temple
             
             //Update defaultPhotoString
-            if userProfile?.gender == "m" {
+            if userProfile?.gender == LoginForm.m.rawValue {
                 ImageService.defaultPhotoString = PictureKeys.brotherDefault.rawValue
             } else {
                 ImageService.defaultPhotoString = PictureKeys.sisterDefault.rawValue
@@ -58,11 +62,5 @@ class HomeController: UICollectionViewController {
         setUpCollectionView()
         setUpMenuBar()
     }
-    
-    lazy var menuBar: MenuBar = {
-        let mb = MenuBar()
-        mb.homeController = self
-        return mb
-    }()
     
 }

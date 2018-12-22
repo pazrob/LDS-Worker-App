@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+ //This is the view that displays when the app is bloqued for all users
+//Reasons to block the app: Firebase costs, Legal Problems
+ 
+ 
+
 class AppBloquedViewController: UIViewController {
     
     
@@ -19,6 +25,7 @@ class AppBloquedViewController: UIViewController {
     }
     
     private func setUpViews() {
+        
         //Clear nav bar
         navigationController?.navigationBar.isHidden = true
         

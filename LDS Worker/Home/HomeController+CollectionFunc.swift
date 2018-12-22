@@ -18,8 +18,8 @@ extension HomeController: UICollectionViewDelegateFlowLayout  {
         collectionView?.isPagingEnabled = true
         
         //Register the video Cells
-        collectionView?.register(MyRequestScroll.self, forCellWithReuseIdentifier: myRequestScrollId)
-        collectionView?.register(GroupRequestScroll.self, forCellWithReuseIdentifier: groupRequestScrollId)
+        collectionView?.register(MyRequestScroll.self, forCellWithReuseIdentifier: ID.myRequestScrollId)
+        collectionView?.register(GroupRequestScroll.self, forCellWithReuseIdentifier: ID.groupRequestScrollId)
 //        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) //spacing fix scrolling bar
     }
     
@@ -43,13 +43,13 @@ extension HomeController: UICollectionViewDelegateFlowLayout  {
         
         //Present request scroll
         if indexPath.item == 0 {
-            let myRequestScroll = collectionView.dequeueReusableCell(withReuseIdentifier: myRequestScrollId, for: indexPath) as! MyRequestScroll
+            let myRequestScroll = collectionView.dequeueReusableCell(withReuseIdentifier: ID.myRequestScrollId, for: indexPath) as! MyRequestScroll
             myRequestScroll.homeController = self
             return myRequestScroll
         }
         //Present group scroll
         if indexPath.item == 1 {
-            let groupRequestScroll = collectionView.dequeueReusableCell(withReuseIdentifier: groupRequestScrollId, for: indexPath) as! GroupRequestScroll
+            let groupRequestScroll = collectionView.dequeueReusableCell(withReuseIdentifier: ID.groupRequestScrollId, for: indexPath) as! GroupRequestScroll
             groupRequestScroll.homeController = self
             return groupRequestScroll
         }

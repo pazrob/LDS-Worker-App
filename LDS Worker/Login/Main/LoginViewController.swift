@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 import Firebase
 
-class LoginViewController : UIViewController{
+class LoginViewController : UIViewController {
         
-    let loginCellId = "loginCellId"
-    let registerCellId = "registerCellId"
+    
     var isFirstCellActive: Bool?
     var iconBottomAnchor : NSLayoutConstraint?
     var collectionBottomConstraint : NSLayoutConstraint?
@@ -42,39 +41,27 @@ class LoginViewController : UIViewController{
         cv.delaysContentTouches = false
         cv.backgroundColor = .clear
         cv.keyboardDismissMode = .interactive
-        cv.register(LoginCollectionCell.self, forCellWithReuseIdentifier: loginCellId)
-        cv.register(RegisterCollectionCell.self, forCellWithReuseIdentifier: registerCellId)
+        cv.register(LoginCollectionCell.self, forCellWithReuseIdentifier: ID.loginCellId)
+        cv.register(RegisterCollectionCell.self, forCellWithReuseIdentifier: ID.registerCellId)
         cv.delegate = self
         cv.dataSource = self
         return cv
     }()
     
-    lazy var loginLabel: UILabel = {
-        let label = UILabel()
-        label.text = LoginForm.goPreviousView.rawValue
-        label.textColor = UIColor.appPeach
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textAlignment = .center
-        
-        label.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleLoginSwipe))
-        label.addGestureRecognizer(tap)
-        
-        return label
+
+    lazy var ihaveAccountBtn: UIButton = {
+        let btn = UIButton.getAppButton(text: LoginForm.goPreviousView.rawValue)
+        btn.backgroundColor = UIColor.appPeach
+        btn.addTarget(self, action: #selector(self.handleLoginSwipe), for: .touchUpInside)
+        return btn
     }()
     
-    lazy var registerLabel: UILabel = {
-        let label = UILabel()
-        label.text = LoginForm.goNextView.rawValue
-        label.textColor = UIColor.appPeach
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textAlignment = .center
-        
-        label.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleRegisterSwipe))
-        label.addGestureRecognizer(tap)
-        
-        return label
+    
+    lazy var iNeedRegisterBtn: UIButton = {
+        let btn = UIButton.getAppButton(text: LoginForm.goNextView.rawValue)
+        btn.backgroundColor = UIColor.appPeach
+        btn.addTarget(self, action: #selector(self.handleRegisterSwipe), for: .touchUpInside)
+        return btn
     }()
     
     var collectionTopConstraint: NSLayoutConstraint?
@@ -86,13 +73,13 @@ class LoginViewController : UIViewController{
     private func setUpViews(){
         
         view.backgroundColor = UIColor.appEmptyColor
-        loginLabel.isHidden = true
+        ihaveAccountBtn.isHidden = true
         view.addSubview(appIcon)
         view.addSubview(loginCollection)
-        view.addSubview(registerLabel)
-        view.addSubview(loginLabel)
+        view.addSubview(iNeedRegisterBtn)
+        view.addSubview(ihaveAccountBtn)
         
-        //Icon Constraints
+        //LDS Worker Icon Constraints
         iconWidthAnchor = appIcon.widthAnchor.constraint(equalToConstant: 130)
         iconWidthAnchor?.isActive = true
         iconHeightAnchor = appIcon.heightAnchor.constraint(equalToConstant: 130)
@@ -111,13 +98,14 @@ class LoginViewController : UIViewController{
         collectionBottomConstraint = loginCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         collectionBottomConstraint?.isActive = true
         
-        view.addConstrainsWithFormat(format: "V:[v0(40)]-30-|", views: registerLabel)
-        view.addConstrainsWithFormat(format: "H:[v0(200)]", views: registerLabel)
-        registerLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        view.addConstrainsWithFormat(format: "V:[v0(40)]-30-|", views: loginLabel)
-        view.addConstrainsWithFormat(format: "H:[v0(200)]", views: loginLabel)
-        loginLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //Constraints for login label
+        iNeedRegisterBtn.anchor(nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,
+                             topConstant: 0, leftConstant: 40, bottomConstant: 20, rightConstant: 40, widthConstant: 0, heightConstant: 42)
+        
+        //Constraints for register label
+        ihaveAccountBtn.anchor(nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,
+                             topConstant: 0, leftConstant: 40, bottomConstant: 20, rightConstant: 40, widthConstant: 0, heightConstant: 42)
     }
     
     

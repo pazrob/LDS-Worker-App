@@ -21,9 +21,6 @@ extension LoginViewController: UICollectionViewDataSource, UICollectionViewDeleg
         //Allows snap on horizontal cells
         loginCollection.isPagingEnabled = true
         loginCollection.showsHorizontalScrollIndicator = false
-        
-        //Selects the fist icon on menu
-        isFirstCellActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -36,28 +33,28 @@ extension LoginViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0 {
-            let scroll1 = loginCollection.dequeueReusableCell(withReuseIdentifier: registerCellId, for: indexPath) as! RegisterCollectionCell
+            let scroll1 = loginCollection.dequeueReusableCell(withReuseIdentifier: ID.registerCellId, for: indexPath) as! RegisterCollectionCell
             scroll1.loginViewController = self
             return scroll1
         }
         else {
-            let scroll2 = loginCollection.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCollectionCell
+            let scroll2 = loginCollection.dequeueReusableCell(withReuseIdentifier: ID.loginCellId, for: indexPath) as! LoginCollectionCell
             scroll2.loginViewController = self
             return scroll2
         }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         if(scrollView.contentOffset.x > 0) {
-            loginLabel.isHidden = false
-            isFirstCellActive = false
+            ihaveAccountBtn.isHidden = false
         } else {
-            loginLabel.isHidden = true
-            isFirstCellActive = true
+            ihaveAccountBtn.isHidden = true
         }
         
-        registerLabel.alpha = 1 - ( (scrollView.contentOffset.x / 375) * 2 )
-        loginLabel.alpha = ( scrollView.contentOffset.x * 2 ) / 375
+        //Change the alpha pf of the buttons
+        iNeedRegisterBtn.alpha = 1 - ( (scrollView.contentOffset.x / 375) * 2 )
+        ihaveAccountBtn.alpha = ( scrollView.contentOffset.x * 2 ) / 375
     }
     
     override var prefersStatusBarHidden: Bool { return true }

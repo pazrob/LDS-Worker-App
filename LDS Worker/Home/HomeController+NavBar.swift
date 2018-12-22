@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Set up setting and contacts navigation bar btns.
 
 extension HomeController {
     

@@ -12,9 +12,11 @@ import UIKit
 extension HomeController {
     
     func setUpMenuBar(){
+        
         view.addSubview(menuBar)
-        view.addConstrainsWithFormat(format: "H:|[v0]|", views: menuBar)
-        view.addConstrainsWithFormat(format: "V:[v0(50)]|", views: menuBar)
+        menuBar.anchor(view.safeAreaLayoutGuide.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,
+                       topConstant: -50, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
+        
     }
     
     func scrollToMenuIndex(menuIndex: Int){

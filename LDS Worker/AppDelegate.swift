@@ -43,33 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             //Navigation Bar color and shadow
             UINavigationBar.appearance().barTintColor = UIColor.appEmptyColor
-            application.statusBarStyle = .lightContent
             
             //Listens to user logged-in state
             self.assignController()
         }
         
-        
         return true
-    }
-    
-    func requestReview() {
-        SKStoreReviewController.requestReview()
-    }
-    
-    func observeInternetConnection() {
-        
-        let connectedRef = Database.database().reference(withPath: ".info/connected")
-        connectedRef.observe(.value, with: { snapshot in
-            
-            if snapshot.value as? Bool ?? false {
-                print("Connected")
-            } else {
-                let atController = self.window?.rootViewController
-                UIAlertController.sendMessage(viewController: atController, message: "There is no internet connection.")
-            }
-        })
-        
     }
     
     
@@ -87,6 +66,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = UINavigationController(rootViewController: loginViewController)
         }
     }
+    
+    
+    //Needed for storekit
+    func completeTrasactions() {
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        // Deliver content from server, then:
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                // Unlock content
+                case .failed, .purchasing, .deferred:
+                    break // do nothing
+                }
+            }
+        }
+    }
+    
+    
+    //Observe for internet interruption
+    func observeInternetConnection() {
+        
+        let connectedRef = Database.database().reference(withPath: ".info/connected")
+        connectedRef.observe(.value, with: { snapshot in
+            
+            if snapshot.value as? Bool ?? false {
+                print("Connected")
+            } else {
+                let atController = self.window?.rootViewController
+                UIAlertController.sendMessage(viewController: atController, message: "There is no internet connection.")
+            }
+        })
+        
+    }
+    
+    
+    //Sets Store Review
+    func requestReview() {
+        SKStoreReviewController.requestReview()
+    }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -109,25 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    //
-    func completeTrasactions() {
-        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                switch purchase.transaction.transactionState {
-                case .purchased, .restored:
-                    if purchase.needsFinishTransaction {
-                        // Deliver content from server, then:
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                // Unlock content
-                case .failed, .purchasing, .deferred:
-                    break // do nothing
-                }
-            }
-        }
-    }
-    
     
 }
 
