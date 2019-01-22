@@ -473,15 +473,16 @@ class DataService {
                 
             } else {
                 
+                guard let postId = postRef.key else { return }
                 // 2. Saving request-id to users-requests node
-                self.saveUserRequestFanOut(userId: userProfile.uid, requestId: postRef.key, completion: { success in
+                self.saveUserRequestFanOut(userId: userProfile.uid, requestId: postId, completion: { success in
                     
                     if !success {
                         completion(false)
                     }
                     
                     //Update locally for personal posts
-                    let post = Post(id: postRef.key, note: note, from: from, to: to, timeStamp: Double(timestamp), status: false, uid: userProfile.uid, firstName: userProfile.firstName, lastName: userProfile.lastName, gender: userProfile.gender, imageURL: userProfile.imageURL, phone: userProfile.phone)
+                    let post = Post(id: postId, note: note, from: from, to: to, timeStamp: Double(timestamp), status: false, uid: userProfile.uid, firstName: userProfile.firstName, lastName: userProfile.lastName, gender: userProfile.gender, imageURL: userProfile.imageURL, phone: userProfile.phone)
                     userPersonalPosts.append(post)
                     
                     //Return result

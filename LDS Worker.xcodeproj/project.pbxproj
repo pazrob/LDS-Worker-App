@@ -327,13 +327,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		011D4101210682340031A2FE /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
 		011D41142107C9650031A2FE /* TemplePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,7 +717,6 @@
 			children = (
 				0141045221232B8B0012A64B /* PhoneNumber */,
 				01410451212203370012A64B /* Main */,
-				011D4101210682340031A2FE /* Schedule */,
 				01785F4E20FE6400009F7617 /* Legal */,
 				1A453F1F20BF0F4D00D53342 /* Profile */,
 				1A453F1E20BF0F4600D53342 /* Donate */,
@@ -899,7 +891,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LDS Worker/Pods-LDS Worker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -907,7 +899,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",

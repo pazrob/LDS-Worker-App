@@ -29,8 +29,8 @@ enum LoginForm: String {
     
     //Legal
     case agreement = "By Registering, you agree to LDS Worker's \n Terms and Conditions and Data Policy."
-    case termsLink = "https://www.ldsworker.org/terms-and-conditions"
-    case policyLink = "https://www.ldsworker.org/privacy-policy"
+    case termsLink = "https://www.ldsworker.org/terms.html"
+    case policyLink = "https://www.ldsworker.org/policy"
 }
 
 enum AppContent: String {

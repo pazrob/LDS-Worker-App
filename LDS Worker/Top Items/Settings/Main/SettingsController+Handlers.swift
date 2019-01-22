@@ -43,16 +43,14 @@ extension SettingsController {
             
         case [3,0]:
             //Terms & Conditions
-            let termsController = LegalViewController()
-            termsController.type = "Terms & Conditions"
-            termsController.url = URL(string: LoginForm.termsLink.rawValue)
+            guard let termsUrl = URL(string: LoginForm.termsLink.rawValue) else { return }
+            let termsController = LegalViewController(urlPath: termsUrl)
             navigationController?.pushViewController(termsController, animated: true)
             
         case [3,1]:
             //Privacy Policy
-            let privacyController = LegalViewController()
-            privacyController.type = "Privacy Policy"
-            privacyController.url = URL(string: LoginForm.policyLink.rawValue)
+            guard let policyUrl = URL(string: LoginForm.termsLink.rawValue) else { return }
+            let privacyController = LegalViewController(urlPath:policyUrl)
             navigationController?.pushViewController(privacyController, animated: true)
             
         case [4,0]:

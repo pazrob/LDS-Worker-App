@@ -10,44 +10,40 @@ import UIKit
 
 class LegalViewController: UIViewController {
     
-    var type: String?
     var url: URL?
     
-    override func viewDidLoad() {
-        
-        setUpNavigationBar()
-        setUpViews()
-        
+    init(urlPath: URL) {
+        super.init(nibName: nil, bundle: nil)
+        self.url = urlPath
     }
     
-    let webView: UIWebView = {
-        let web = UIWebView()
-        return web
-    }()
+    
+    override func viewDidLoad() {
+        setUpViews()
+    }
+    
     
     func setUpViews() {
         
+        //Set nav bar and view
+        navigationItem.largeTitleDisplayMode = .never
         view.backgroundColor = UIColor.white
         
+        //Webview
+        let webView = UIWebView()
         
-        if let urlToLoad = url {
-            webView.loadRequest(URLRequest(url: urlToLoad))
-        }
+        //Load the url
+        guard let urlToLoad = url else { return }
+        webView.loadRequest(URLRequest(url: urlToLoad))
         
+        //Add webview
         view.addSubview(webView)
-        
-        view.addConstrainsWithFormat(format: "H:|[v0]|", views: webView)
-        view.addConstrainsWithFormat(format: "V:|[v0]|", views: webView)
+        webView.fillSuperview()
     }
     
-    func setUpNavigationBar() {
-        
-        navigationItem.largeTitleDisplayMode = .never
-        
-        if let titleType = type {
-            title = titleType
-        }
+    //Default
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
     
 }
