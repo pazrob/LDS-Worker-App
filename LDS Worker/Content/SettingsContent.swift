@@ -23,7 +23,7 @@ enum UITextSettings: String {
     case rateApp = "Rate App"
     case feedback = "Feedback"
     case termsAndConditions = "Terms & Conditions"
-    case dataPolicy = "Data Policy"
+    case dataPolicy = "Privacy Policy"
     case signOut = "Sign Out"
     case eraseAccount = "Erase Account"
     

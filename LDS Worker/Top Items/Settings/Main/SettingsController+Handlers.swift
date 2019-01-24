@@ -28,16 +28,11 @@ extension SettingsController {
             UIActivityViewController.inviteAFriend(viewController: self)
             
         case [2,1]:
-            //Donate
-            let donateController = DonateViewController()
-            navigationController?.pushViewController(donateController, animated: true)
-            
-        case [2,2]:
             //Rate App
             let appDelegate = AppDelegate()
             appDelegate.requestReview()
             
-        case [2,3]:
+        case [2,2]:
             //Feedback
             handleFeedback()
             
@@ -49,7 +44,7 @@ extension SettingsController {
             
         case [3,1]:
             //Privacy Policy
-            guard let policyUrl = URL(string: LoginForm.termsLink.rawValue) else { return }
+            guard let policyUrl = URL(string: LoginForm.policyLink.rawValue) else { return }
             let privacyController = LegalViewController(urlPath:policyUrl)
             navigationController?.pushViewController(privacyController, animated: true)
             
@@ -135,7 +130,7 @@ extension SettingsController {
     private func eraseUserAccount(checkPass password: String) {
         
         //Start Animation
-        UIActivityIndicatorView.startActivityLoad(view: view)
+        UIActivityIndicatorView.startActivityLoad()
         
         //Network call
         FirebaseService.reAuthenticate(password: password) { success, errorString in

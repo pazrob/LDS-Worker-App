@@ -16,16 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //In-App purchase
-        completeTrasactions()
         
         //Give access to the view through the code, this window is the whole container
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
-        self.window?.rootViewController = UINavigationController(rootViewController: PickGenderController())
+        self.window?.rootViewController = LaunchingViewController()
         
         //Firebase library to configure APIs
         FirebaseApp.configure()
@@ -33,10 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Check if app is bloqued
         FirebaseService.isAppBloqued { [unowned self] isBloqued in
-            
             if isBloqued {
-                
-                //Send to app bloqued controller
                 self.window?.rootViewController = UINavigationController(rootViewController: AppBloquedViewController())
                 return
             }

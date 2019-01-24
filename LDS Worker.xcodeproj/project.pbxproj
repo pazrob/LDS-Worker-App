@@ -11,7 +11,6 @@
 		010CF45E20F5381200637937 /* MessageDC+Send.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010CF45D20F5381200637937 /* MessageDC+Send.swift */; };
 		011BC950212489EF0026B212 /* PictureKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011BC94F212489EF0026B212 /* PictureKeys.swift */; };
 		011BC9522126106C0026B212 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011BC9512126106C0026B212 /* UIImage+Extensions.swift */; };
-		011D40FE21014DE00031A2FE /* LauchingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D40FD21014DE00031A2FE /* LauchingController.swift */; };
 		011D410021014FBE0031A2FE /* UIAplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D40FF21014FBE0031A2FE /* UIAplication+Extension.swift */; };
 		011D4103210775A00031A2FE /* ContactsController+SearchFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D4102210775A00031A2FE /* ContactsController+SearchFunc.swift */; };
 		011D41052107959F0031A2FE /* LoginVC+Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011D41042107959F0031A2FE /* LoginVC+Services.swift */; };
@@ -163,7 +162,6 @@
 		010CF45D20F5381200637937 /* MessageDC+Send.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageDC+Send.swift"; sourceTree = "<group>"; };
 		011BC94F212489EF0026B212 /* PictureKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureKeys.swift; sourceTree = "<group>"; };
 		011BC9512126106C0026B212 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
-		011D40FD21014DE00031A2FE /* LauchingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauchingController.swift; sourceTree = "<group>"; };
 		011D40FF21014FBE0031A2FE /* UIAplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication+Extension.swift"; sourceTree = "<group>"; };
 		011D4102210775A00031A2FE /* ContactsController+SearchFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactsController+SearchFunc.swift"; sourceTree = "<group>"; };
 		011D41042107959F0031A2FE /* LoginVC+Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Services.swift"; sourceTree = "<group>"; };
@@ -669,7 +667,6 @@
 				1A8E817620A35B02004835C9 /* Assets.xcassets */,
 				1A8E816F20A35B00004835C9 /* AppDelegate.swift */,
 				1A8E817B20A35B02004835C9 /* Info.plist */,
-				011D40FD21014DE00031A2FE /* LauchingController.swift */,
 			);
 			path = "LDS Worker";
 			sourceTree = "<group>";
@@ -1051,7 +1048,6 @@
 				013A192E211E6CC4005808DC /* UserDefaultKeys.swift in Sources */,
 				1A6F672C20E301A100FE6F2B /* MessageDetailController.swift in Sources */,
 				011D410B2107A8FC0031A2FE /* PickTempleVC+SearchFunc.swift in Sources */,
-				011D40FE21014DE00031A2FE /* LauchingController.swift in Sources */,
 				1A8E817020A35B00004835C9 /* AppDelegate.swift in Sources */,
 				011D411A2107CE800031A2FE /* PickTempleVC+NavBar.swift in Sources */,
 				0141E09120F016D60058499E /* ContactsController+NavBar.swift in Sources */,

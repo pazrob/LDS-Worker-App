@@ -15,7 +15,7 @@ extension LoginViewController {
         
         //UI update
         view.endEditing(true)
-        UIActivityIndicatorView.startActivityLoad(view: self.view)
+        UIActivityIndicatorView.startActivityLoad()
         
         FirebaseService.performRegister(email: potentialUser.email, password: potentialUser.password) { success, errorMessage in
             
@@ -50,7 +50,7 @@ extension LoginViewController {
         
         //UI update
         view.endEditing(true)
-        UIActivityIndicatorView.startActivityLoad(view: self.view)
+        UIActivityIndicatorView.startActivityLoad()
         
         
         FirebaseService.performLogin(email: email, password: password) { success, error in

@@ -27,10 +27,11 @@ class LegalViewController: UIViewController {
         
         //Set nav bar and view
         navigationItem.largeTitleDisplayMode = .never
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.red
         
         //Webview
         let webView = UIWebView()
+        webView.isOpaque = false
         
         //Load the url
         guard let urlToLoad = url else { return }
@@ -40,6 +41,7 @@ class LegalViewController: UIViewController {
         view.addSubview(webView)
         webView.fillSuperview()
     }
+    
     
     //Default
     required init?(coder aDecoder: NSCoder) {

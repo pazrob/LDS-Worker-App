@@ -19,19 +19,21 @@ extension UIActivityIndicatorView {
         return wView
     }()
     
-    static func startActivityLoad(view: UIView) {
+    static func startActivityLoad() {
+        
+        guard let window = UIApplication.shared.keyWindow else { return }
         
         //Loading View
-        view.addSubview(backgroundView)
-        view.addConstrainsWithFormat(format: "H:|[v0]|", views: backgroundView)
-        view.addConstrainsWithFormat(format: "V:|[v0]|", views: backgroundView)
+        window.addSubview(backgroundView)
+        window.addConstrainsWithFormat(format: "H:|[v0]|", views: backgroundView)
+        window.addConstrainsWithFormat(format: "V:|[v0]|", views: backgroundView)
         backgroundView.isHidden = false
         
         //Loading activity indicator
-        activityIndicator.center = view.center
+        activityIndicator.center = window.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .whiteLarge
-        view.addSubview(activityIndicator)
+        window.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         
         //Block all phone interactions

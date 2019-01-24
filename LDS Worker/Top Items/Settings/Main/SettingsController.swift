@@ -21,7 +21,7 @@ class SettingsController: UIViewController {
                                       [UITextSettings.profile.rawValue,
                                        UITextSettings.updatePhoneNumber.rawValue],
                                       [UITextSettings.receiveNotifications.rawValue],
-                                      [UITextSettings.share.rawValue, UITextSettings.donate.rawValue,
+                                      [UITextSettings.share.rawValue,
                                        UITextSettings.rateApp.rawValue, UITextSettings.feedback.rawValue],
                                       [UITextSettings.termsAndConditions.rawValue, UITextSettings.dataPolicy.rawValue],
                                       [UITextSettings.signOut.rawValue, UITextSettings.eraseAccount.rawValue],

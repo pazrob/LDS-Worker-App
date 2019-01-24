@@ -13,7 +13,7 @@ extension PickPhotoViewController {
     // Register the user email and password, if succeeds: Upload photo
     func completeRegistration(potentialUser: UserRegistrationModel, isTherePhoto: Bool) {
         
-        UIActivityIndicatorView.startActivityLoad(view: self.view)
+        UIActivityIndicatorView.startActivityLoad()
         
         if isTherePhoto {
             // Save photo first, then user in database
