@@ -299,7 +299,8 @@ class FirebaseService: NSObject {
         credential = EmailAuthProvider.credential(withEmail: email, password: password)
         
         
-        user?.reauthenticate(with: credential) { error in
+        
+        user?.reauthenticateAndRetrieveData(with: credential, completion: { authDataResult, error in
             if let error = error {
                 // An error happened.
                 completion(false, error.localizedDescription)
@@ -308,7 +309,7 @@ class FirebaseService: NSObject {
                 // User re-authenticated. Deleting.
                 completion(true, nil)
             }
-        }
+        })
     }
     
     

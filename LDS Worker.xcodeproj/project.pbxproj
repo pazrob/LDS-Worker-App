@@ -650,6 +650,7 @@
 		1A8E816E20A35B00004835C9 /* LDS Worker */ = {
 			isa = PBXGroup;
 			children = (
+				A4BE661C22AC5FB30076F5B5 /* New Group */,
 				0154A43E21CD957800B86B09 /* License */,
 				D1931AC12172FFF90016D14C /* LDS Worker.entitlements */,
 				D1675CCD216078B100AB7EBA /* Extra VC */,
@@ -788,6 +789,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A4BE661C22AC5FB30076F5B5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		BC7050D965AD932B364C47DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -839,7 +847,7 @@
 				TargetAttributes = {
 					1A8E816B20A35B00004835C9 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -886,7 +894,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LDS Worker/Pods-LDS Worker-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-LDS Worker/Pods-LDS Worker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
@@ -903,7 +911,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LDS Worker/Pods-LDS Worker-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LDS Worker/Pods-LDS Worker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9FD126DFB5B97E340D47C127 /* [CP] Check Pods Manifest.lock */ = {
@@ -1211,7 +1219,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.robinson.LDS-Worker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1232,7 +1240,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.robinson.LDS-Worker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

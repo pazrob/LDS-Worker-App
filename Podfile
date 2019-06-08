@@ -8,6 +8,7 @@ target 'LDS Worker' do
   use_frameworks!
 
   # Pods for LDS Worker
+	pod 'Firebase'
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'

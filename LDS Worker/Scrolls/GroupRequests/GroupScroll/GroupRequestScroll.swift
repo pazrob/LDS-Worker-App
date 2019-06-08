@@ -70,7 +70,7 @@ class GroupRequestScroll: BaseCell, UICollectionViewDataSource, UICollectionView
             if groupTitles.contains(headerTimestamp) {
                 
                 //Find out in what index
-                if let index: Int = groupTitles.index(of: headerTimestamp) {
+                if let index: Int = groupTitles.firstIndex(of: headerTimestamp) {
                     
                     //Find posts using the index and append
                     var posts = groupPosts[index]
