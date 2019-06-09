@@ -13,7 +13,9 @@ target 'LDS Worker' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
 	pod 'Firebase/Storage'
-
+	pod 'SwiftLint'
+	pod 'XLPagerTabStrip', '~> 9.0'
+	pod 'IQKeyboardManagerSwift'
   #Pod for in-app-purchase
   pod 'SwiftyStoreKit'
 end

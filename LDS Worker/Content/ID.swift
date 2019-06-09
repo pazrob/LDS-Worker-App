@@ -9,7 +9,6 @@
 import Foundation
 
 class ID {
-    
     static let myRequestScrollId = "myRequestScrollId"
     static let groupRequestScrollId = "groupRequestScrollId"
     

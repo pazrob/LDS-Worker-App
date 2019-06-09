@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SwiftyStoreKit
 import StoreKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,17 +42,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.assignController()
         }
         
+        setupKeyboardManager()
         return true
     }
     
+    func setupKeyboardManager() {
+        //Keyboard
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.overrideKeyboardAppearance = true
+        IQKeyboardManager.shared.keyboardAppearance = .dark
+    }
     
     //Asigns the VC based on logged status
     func assignController() {
         
         if UserDefaults.standard.bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue) {
             //User is logged in
-            let layout = UICollectionViewFlowLayout()
-            self.window?.rootViewController = UINavigationController(rootViewController: HomeController(collectionViewLayout: layout))
+            self.window?.rootViewController = UINavigationController(rootViewController: HomeController())
             
         } else {
             //User is NOT logged in

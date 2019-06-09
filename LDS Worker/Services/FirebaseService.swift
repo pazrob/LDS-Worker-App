@@ -1,6 +1,6 @@
 //
 //  ApiService.swift
-//  TempleWorker2
+//  LDS Worker
 //
 //  Created by Campus Life Design 1 on 5/7/18.
 //  Copyright © 2018 Robinson Paz. All rights reserved.
@@ -13,15 +13,13 @@ class FirebaseService: NSObject {
     
     static var currentUserProfile : UserProfile?
     
-    
-    
     // Registers user
     static func performRegister(email: String,
                                 password: String,
-                                completion: @escaping ((_ success: Bool, _ errMessage: String?) -> ())){
+                                completion: @escaping ((_ user: Bool, _ errMessage: String?) -> ())){
         
         Auth.auth().createUser(withEmail: email, password: password) { user, error in
-            
+            let user = user
             if error == nil && user != nil {
                 completion(true, nil)
             } else {
@@ -29,7 +27,6 @@ class FirebaseService: NSObject {
             }
         }
     }
-    
     
     //Saves user profile in database
     static func saveUserProfile(firstNameValue firstName: String,
